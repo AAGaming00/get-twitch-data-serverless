@@ -47,6 +47,10 @@ exports.handler = async (event) => {
     return {
       statusCode: 500,
       body: JSON.stringify(err.message),
+      headers: {
+        'content-type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
     };
   }
 };
