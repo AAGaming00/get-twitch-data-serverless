@@ -12,8 +12,7 @@ exports.handler = async (event) => {
       },
       body: JSON.stringify({message: 'You can use CORS'}),
     };
-    callback(null, response);
-    return;
+    return(null, response);
   }
   const { user_id } = JSON.parse(event.body);
 
