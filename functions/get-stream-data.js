@@ -34,10 +34,14 @@ exports.handler = async (event) => {
       });
 
     // Twitch response with 20 streams that are currently live
-    return {
+    callback(null, {
+      headers: {
+        "Access-Control-Allow-Origin": "*"
+      },
       statusCode: 200,
-      body: JSON.stringify(response),
-    };
+      body: response
+    });
+    
   } catch (err) {
     return {
       statusCode: 500,
