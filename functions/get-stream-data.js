@@ -17,9 +17,9 @@ exports.handler = async (event) => {
   // send an authenticated request to the Twitch API
   // see https://dev.twitch.tv/docs/api/reference#get-streams
   try {
-    const params = user_login ? `?user_login=${user_login}` : '';
+    const params = user_login ? `?id=${user_login}` : '';
     const response = await fetch(
-      `https://api.twitch.tv/helix/streams${params}`,
+      `https://api.twitch.tv/helix/users${params}`,
       {
         method: 'GET',
         headers: {
