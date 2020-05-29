@@ -2,6 +2,19 @@ const fetch = require('node-fetch');
 const { getTwitchAccessToken } = require('@jlengstorf/get-twitch-oauth');
 
 exports.handler = async (event) => {
+  if (event.httpMethod === 'OPTIONS') {
+    const response = {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers':
+          'Origin, X-Requested-With, Content-Type, Accept',
+      },
+      body: JSON.stringify({message: 'You can use CORS'}),
+    };
+    callback(null, response);
+    return;
+  }
   const { user_id } = JSON.parse(event.body);
 
   if (!process.env.TWITCH_CLIENT_ID || !process.env.TWITCH_CLIENT_SECRET) {
