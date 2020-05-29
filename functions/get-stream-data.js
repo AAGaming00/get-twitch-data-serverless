@@ -2,7 +2,7 @@ const fetch = require('node-fetch');
 const { getTwitchAccessToken } = require('@jlengstorf/get-twitch-oauth');
 
 exports.handler = async (event) => {
-  const { user_login } = JSON.parse(event.body);
+  const { user_id } = JSON.parse(event.body);
 
   if (!process.env.TWITCH_CLIENT_ID || !process.env.TWITCH_CLIENT_SECRET) {
     return {
@@ -17,7 +17,7 @@ exports.handler = async (event) => {
   // send an authenticated request to the Twitch API
   // see https://dev.twitch.tv/docs/api/reference#get-streams
   try {
-    const params = user_login ? `?id=${user_login}` : '';
+    const params = user_id ? `?id=${user_id}` : '';
     const response = await fetch(
       `https://api.twitch.tv/helix/users${params}`,
       {

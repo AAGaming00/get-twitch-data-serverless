@@ -113,8 +113,8 @@
       </p>
 
       <form>
-        <label for="user_login">Twitch User ID</label>
-        <input type="text" id="user_login" name="user_login" />
+        <label for="user_id">Twitch User ID</label>
+        <input type="text" id="user_id" name="user_id" />
 
         <button>Fetch Stream Data</button>
       </form>
@@ -147,7 +147,7 @@
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ user_login: data.get('user_login') }),
+          body: JSON.stringify({ user_id: data.get('user_id') }),
         })
           .then((res) => res.json())
           .then((response) => {
