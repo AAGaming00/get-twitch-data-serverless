@@ -7,7 +7,5 @@
   TWITCH_CLIENT_ID = "your Twitch app’s client ID"
   TWITCH_CLIENT_SECRET = "your Twitch app’s client secret"
 [[headers]]
-# Define which paths this specific [[headers]] block will cover.
-for = "/.netlify/functions/*"
 [headers.values]
 Access-Control-Allow-Origin = "*"
